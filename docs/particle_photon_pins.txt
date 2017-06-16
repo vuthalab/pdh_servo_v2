@@ -1,0 +1,11 @@
+Here are the available pins on the photon:
+
+D0 to D7 - 8pins
+A0 to A5
+DAC WKP
+
+RX TX
+
+
+Vin pin takes a voltage between 3.6 V and 5V, 80mA typical consumption
+

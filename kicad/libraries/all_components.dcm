@@ -1,0 +1,88 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 7805_corrected
+D Linear Regulator +5V
+K POWER REGUL
+F regulator\lm78xx.pdf
+$ENDCMP
+#
+$CMP 78L05
+D Linear Regulator +5V
+K POWER REGUL
+F regulator\lm78lxx.pdf
+$ENDCMP
+#
+$CMP AD820
+D Op amp
+K Ampliop
+F AmpliOp.sch
+$ENDCMP
+#
+$CMP AD8628_tri
+D Op amp
+K Ampliop
+F AmpliOp.sch
+$ENDCMP
+#
+$CMP ADA4177-1
+D Op amp
+K Ampliop
+F AmpliOp.sch
+$ENDCMP
+#
+$CMP LM7805
+D Linear Regulator +5V
+K POWER REGUL
+F regulator\lm78xx.pdf
+$ENDCMP
+#
+$CMP LM7812
+D Linear Regulator +12V
+K POWER REGUL
+F regulator\lm78xx.pdf
+$ENDCMP
+#
+$CMP LT1028
+D Op amp
+K Ampliop
+F AmpliOp.sch
+$ENDCMP
+#
+$CMP MPSA14_NPN
+D Darlington NPN transistor
+K Q
+$ENDCMP
+#
+$CMP MPSA64_PNP
+D Darlington PNP transistor
+K Q
+$ENDCMP
+#
+$CMP OPA2211
+D Dual Op amp (low power)
+K ampliop
+F analog-dev/op275.pdf
+$ENDCMP
+#
+$CMP OPA2227
+D Dual Op amp (low power)
+K ampliop
+F analog-dev/op275.pdf
+$ENDCMP
+#
+$CMP TL4050A41
+D Precision 4.096V reference
+K DEV DIODE
+$ENDCMP
+#
+$CMP TL4050B41
+D Precision 4.096V reference
+K DEV DIODE
+$ENDCMP
+#
+$CMP TL4050B51
+D Precision 5V reference
+K DEV DIODE
+$ENDCMP
+#
+#End Doc Library

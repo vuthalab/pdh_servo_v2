@@ -1,0 +1,113 @@
+Improvements
+============
+
+- Swap amplifier for one with higher GBP. OPA211 seems like a good choice.
+Lower noise, higher bandwidth.
+- Two stage amplifier needed, since we need to invert the signal so that
+the sign is the same as the direct RF path.
+- Phase lead on the second stage amplifier.
+- Switches for I gain.
+- Possibility to monitor multiple signals:
+   - Input error monitor, as is and low pass filtered. Low pass filtered version
+   is useful for discerning features on an oscilloscope that could have been
+   obscured due to noise. Should I include input error + offset? Maybe
+   can switch to output error monitor for that.
+   - Output error monitor
+   - Piezo monitor
+   - Transmitted PD monitor
+- Feedforward to current.
+- Trimpot for external modulation.
+- Power supply filtering
+- Smart relocking
+- Onboard arduino for relocking logic
+- Single turn trimpots for gain adjustment
+- Multiple turn trimpots for offset adjustment
+- On board capacitance multiplier
+
+
+Maybes
+======
+- Put scanning signal in the box itself.
+- Let the arduino generate the scan signal.
+- Digital panel meter, optionally use the microcontroller.
+
+
+Component choices
+=================
+- Amplifier: OPA211 seems to be a good choice. Low input voltage and current
+noise, and 50 MHZ GBP. Using the OPA2211 dual amplifier. Has the same pin
+configuration as the OP27 I have used previously.
+- muController: The particle photon microcontroller seems like a good choice.
+We do not need this to be extremely fast. This can transfer data over wifi,
+so easy to program, and is quite cheap.
+Okay, so setting the photon was incredibly easy.
+
+
+- Switches: fox uses 100ns, 100pA switches, I'm using DG444.
+- DIP switches: http://www.digikey.ca/product-detail/en/copal-electronics-inc/CJS-1200TB/563-1022-2-ND/948333
+- single turn trimpots
+
+Design choices
+==============
+A number of analog switches will be placed in the servo loop filter to
+aid in switching integrators and signal inputs. I'm basing the design on the
+Fox et. al design (pg 24 on http://tf.nist.gov/general/pdf/1819.pdf). The
+servo has a number of switches:
+
+- S1 - servo input switch. Turns off the input signal to the servo electronics.
+- S2 - input offset switch. Turns off the input offset trimpot signal.
+- S3 - stage 1 integrator switch
+- S4 - piezo input switch
+- S5 - piezo integrator switch
+- S6 - current servo output switch
+
+We don't need S2, as that switch is always on. Similarly, S6 will always be on.
+Instead we will add an external piezo scan switch.
+
+Notation: if a switch is "on" or "closed" or 1, it allows current to flow.
+
+Here's the control algorithm:
+
+- Initial locking phase:
+011010
+The laser is swept through the cavity, while the current and piezo feedback is off.
+- When cavity transmission is detected:
+111110
+Turn on servo input and piezo input.
+- Check transmission. If still high, lock has been acquired. Turn on piezo
+integrator.
+- If transmission high, this worked.
+Turn current integrator.
+
+
+Currently, here's what I do to reqacquire lock:
+- Turn off integrator.
+- Turn on external piezo scan. If laser is still within the scanning range,
+then great. There will be transmission again, and I can acquire lock again.
+
+
+- Manual Switch
+http://www.digikey.ca/product-search/en?keywords=100SP3T2B4M7RE
+switch has three positions:
+top: 2 pin connected to 1  (take this as ON)
+bottom: 2 connected to 3 (take this as OFF)
+mid: 2 open
+
+- Doing a double BNC connector. Much better
+
+A is bottom. Remember
+
+
+VERIFY
+======
+- All custom footprints
+- Sizes of standard footprints
+- Total height of the components
+- Circuit diagram, especially digital lines
+
+THEN
+====
+- Make a bill of materials
+- Order PCB
+- Order Parts
+

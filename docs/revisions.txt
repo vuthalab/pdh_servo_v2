@@ -1,0 +1,26 @@
+Rev 1
+=====
+
+Replaced R3 from 12 Ohm to 50ohm. Otherwise I was seeing high frequency
+oscillations when the RV1 trimpot was turned down.
+
+Rev 2
+=====
+Changed C45 from 22nF to 2200pF to increase the piezo gain on board 1.
+Changed it to 4700pF when I realized that was too much gain for the piezo stage.
+
+Rev 3
+=====
+Changed R28 and R29 from 2k to 1k, to allow enough current through the zener
+diodes for breakdown.
+
+On board 2, replaced the LT1028 opamps with the OP211. OP211 has comparable
+noise and GBW specs as LT1028, but offers rail to rail swing. When I tested
+out the OP211, it wasn't oscillating when the voltage hit the rails, as LT1028
+was. Also, there are no issues with oscillations in the derivative gain stage
+on the second opamp.
+
+Rev 4
+=====
+
+Replaced LT1028 with OPA211 on board 1 as well.
