@@ -1,0 +1,11 @@
+- test1 pass
+- test2 pass, but switch doesn't work perfectly for frequencies > 1MHz, maybe
+pickup from somewhere?
+
+- test3 pass: integrator rails even with the tiniest of offset. Good low
+frequency gain.
+
+- test4 pass
+- test5 works
+
+
